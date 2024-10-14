@@ -1,10 +1,6 @@
 
 package proyecto.pkg1;
 
-/**
- *
- * @author diego
- */
 public class Proyecto1 {
 
     /**
