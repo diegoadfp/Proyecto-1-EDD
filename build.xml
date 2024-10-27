@@ -1,0 +1,54 @@
+<project name="Proyecto1" default="jar" basedir=".">
+    <description>
+        Proyecto que usa GraphStream para visualización de grafos.
+    </description>
+
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+    <property name="libs" location="libs"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${build}">
+            <classpath>
+                <fileset dir="${libs}">
+                    <include name="gs-core-2.0.jar"/>
+                    <include name="gs-UI-swing-2.0.jar"/>
+                    <include name="json-20210307.jar"/> <!-- Agrega esta línea -->
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist}/lib"/>
+        <jar destfile="${dist}/Proyecto1.jar" basedir="${build}"/>
+        <copy todir="${dist}/lib">
+            <fileset dir="${libs}">
+                <include name="gs-core-2.0.jar"/>
+                <include name="gs-UI-swing-2.0.jar"/>
+                <include name="json-20210307.jar"/> <!-- Agrega esta línea -->
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>
+
+<dependency>
+    <groupId>org.graphstream</groupId>
+    <artifactId>gs-core</artifactId>
+    <version>1.3</version>
+</dependency>
+<dependency>
+    <groupId>org.graphstream</groupId>
+    <artifactId>gs-ui</artifactId>
+    <version>1.3</version>
+</dependency>

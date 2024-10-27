@@ -1,13 +1,16 @@
 
-package proyecto.pkg1;
+package proyecto1;
+
+import javax.swing.*;
 
 public class Proyecto1 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Configurar el paquete de UI de GraphStream
+        System.setProperty("org.graphstream.ui", "swing");
+
+        java.awt.EventQueue.invokeLater(() -> {
+            Container frame = new Container();
+            frame.setVisible(true);
+        });
     }
-    
 }
